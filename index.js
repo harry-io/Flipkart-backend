@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { connection } = require("mongoose");
-const connectDb = require("./config/db.database");
+const connectDb = require("./Config/db.database");
 require("dotenv").config();
 
 app.use(express.json());
