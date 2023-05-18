@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
   res.status(200).send({ message: "Flipkart Backend." });
 });
 app.use("/users", userRoute);
-app.use("/products", RequireSignIn, productRoute);
+app.use("/products", productRoute);
 app.use("/category", RequireSignIn, RequireAdmin, categoryRoute);
 
 
