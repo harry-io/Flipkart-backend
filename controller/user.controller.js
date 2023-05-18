@@ -50,7 +50,7 @@ const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
         // check user
-        const user = await userModel.findOne();
+        const user = await userModel.findOne({ email });
         if (!user) {
             return res.status(404).send({
                 success: false,
@@ -58,8 +58,8 @@ const loginController = async (req, res) => {
             })
         };
 
-        if (!password) {
-            return res.status(200).send({
+        if (comparePassword(password, user.password)) {
+            return res.status(404).send({
                 success: false,
                 message: "Invalid Password"
             });
