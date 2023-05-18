@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { connection } = require("mongoose");
-const connectDb = require("./Config/db.database");
+const connectDb = require("./config/db.database");
 const registerController = require("./controller/user.controller");
 require("dotenv").config();
 const userRoute = require("./Routes/user.route");
