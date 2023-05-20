@@ -31,7 +31,7 @@ const getProductController = async (req, res) => {
 
 
         if (price_gte && price_lte) {
-            args.original_price = { $gte: +price_gte, $lte: +price_lte }
+            args.final_price = { $gte: +price_gte, $lte: +price_lte }
         }
 
         let skip = (page - 1) * limit;
