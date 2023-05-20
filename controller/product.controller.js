@@ -39,7 +39,7 @@ const getProductController = async (req, res) => {
         let sorted = {};
 
         if (sort == "rating" || "discount" || "price" || "createdAt") {
-            sorted[sort] = !order ? "asc" : order;
+            sort == "price" ? sorted["final_price"] = !order ? "asc" : order : sorted[sort] = !order ? "asc" : order;
         }
 
 
