@@ -4,7 +4,7 @@ const productModel = require("../Models/product.model");
 
 
 const getProductController = async (req, res) => {
-    let { title, brand, sort, page, order, value, limit, rating, price_gte, price_lte } = req.query;
+    let { title, brand, sort, page, order, is_assured, value, discount, limit, rating, price_gte, price_lte } = req.query;
     try {
 
         // argument object
@@ -18,6 +18,19 @@ const getProductController = async (req, res) => {
         // filter by brand
         if (brand) {
             args.brand = brand;
+        }
+
+        if (is_assured) {
+            args.is_assured = is_assured;
+        }
+
+
+        if (rating) {
+            args.rating = { $gte: rating }
+        }
+
+        if (discount) {
+            args.discount = { $gte: rating }
         }
 
         // data limit
