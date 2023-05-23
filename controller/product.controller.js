@@ -51,15 +51,13 @@ const getProductController = async (req, res) => {
 
         let sorted = {};
 
-        if (sort == "rating" || "discount" || "price" || "createdAt") {
+        if (sort && (sort === "rating" || "discount" || "price" || "createdAt")) {
             sort == "price" ? sorted["final_price"] = !order ? "asc" : order : sorted[sort] = !order ? "asc" : order;
         }
 
 
-
-
         let productCount = await productModel.find(args).sort(sorted).countDocuments({});
-        let productData = await productModel.find(args).sort(sorted).skip(skip).limit(limit)
+        let productData = await productModel.find(args).skip(skip).limit(limit).sort(sorted)
 
         res.status(200).send({
             totalcount: productCount,
