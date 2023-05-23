@@ -35,7 +35,7 @@ const getProductController = async (req, res) => {
 
         // data limit
         if (!limit) {
-            limit = 0;
+            limit = 10;
         }
 
         if (!page) {
