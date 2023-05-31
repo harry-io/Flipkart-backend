@@ -56,7 +56,7 @@ const getProductController = async (req, res) => {
         }
 
 
-        let productCount = await productModel.find(args).sort(sorted).countDocuments({});
+        let productCount = await productModel.countDocuments(args);
         let productData = await productModel.find(args).skip(skip).limit(limit).sort(sorted)
 
         res.status(200).send({
